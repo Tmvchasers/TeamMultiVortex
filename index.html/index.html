@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Team MultiVortex (TMV) — Storm Chasing</title>
+  <meta name="description" content="Team MultiVortex (TMV) — storm chasing team. Safety-first coverage, chases, media, and community." />
+
+  <style>
+    :root{
+      --bg:#06080c;
+      --bg2:#0a0f18;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --line: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --yellow:#ffd400;
+      --yellow2:#ffb800;
+      --shadow: 0 20px 70px rgba(0,0,0,.70);
+      --radius: 18px;
+      --max: 1180px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 10% 10%, rgba(255,212,0,.16), transparent 60%),
+        radial-gradient(900px 650px at 90% 20%, rgba(255,184,0,.10), transparent 60%),
+        radial-gradient(900px 650px at 50% 100%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width: var(--max); margin:0 auto; padding: 20px 16px 90px; }
+
+    /* NAV (boxed like your screenshot) */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,212,0,.35);
+      background: linear-gradient(to bottom, rgba(6,8,12,.90), rgba(6,8,12,.60));
+      backdrop-filter: blur(12px);
+    }
+    .navbox{
+      max-width: var(--max);
+      margin: 0 auto;
+      border-radius: 14px;
+      border: 2px solid rgba(255,212,0,.45);
+      background: rgba(0,0,0,.35);
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      padding: 12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 250px;
+    }
+    .brand img{
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      object-fit: cover;
+    }
+    .brand .title{
+      font-weight: 900;
+      letter-spacing:.2px;
+      line-height: 1.15;
+    }
+    .brand .sub{
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 800;
+      letter-spacing:.25px;
+      margin-top: 2px;
+    }
+
+    .links{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content:flex-end;
+      align-items:center;
+    }
+    .links a{
+      font-size: 13px;
+      font-weight: 900;
+      color: rgba(255,255,255,.78);
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease, color .12s ease;
+      user-select:none;
+      white-space: nowrap;
+    }
+    .links a:hover{
+      transform: translateY(-1px);
+      color: var(--text);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,212,0,.35);
+    }
+
+    /* HERO banner like screenshot */
+    .hero{
+      margin-top: 18px;
+      border-radius: 20px;
+      border: 2px solid rgba(255,212,0,.35);
+      background: rgba(0,0,0,.30);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow:hidden;
+      min-height: 340px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 34px 18px;
+    }
+    .hero::before{
+      content:"TEAM MULTIVORTEX";
+      position:absolute;
+      left: 50%;
+      top: 52%;
+      transform: translate(-50%,-50%) rotate(-8deg);
+      font-weight: 1000;
+      letter-spacing: .25em;
+      font-size: clamp(42px, 7vw, 112px);
+      color: rgba(255,255,255,.05);
+      white-space: nowrap;
+      pointer-events:none;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset: -120px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,212,0,.14), transparent 55%),
+        radial-gradient(circle at 70% 70%, rgba(255,184,0,.10), transparent 55%);
+      transform: rotate(10deg);
+      pointer-events:none;
+    }
+
+    .heroInner{
+      position:relative;
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 10px;
+    }
+    .heroLogo{
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.05);
+      object-fit: cover;
+      box-shadow: 0 18px 45px rgba(0,0,0,.55);
+    }
+    h1{
+      margin: 6px 0 0;
+      font-size: clamp(28px, 4vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -.6px;
+    }
+    .tagline{
+      margin: 0;
+      color: rgba(255,255,255,.68);
+      font-weight: 800;
+      letter-spacing:.2px;
+    }
+    .ctaRow{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content:center;
+      margin-top: 10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 900;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, filter .12s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,212,0,.35);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(255,212,0,.95), rgba(255,184,0,.85));
+      color: rgba(0,0,0,.92);
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 22px 60px rgba(255,212,0,.14);
+    }
+    .btn.primary:hover{ filter: brightness(1.03); }
+    .btn svg{ width:18px; height:18px; }
+
+    /* SECTION FRAME like screenshot */
+    .sectionFrame{
+      margin-top: 18px;
+      border-radius: 20px;
+      border: 2px solid rgba(255,212,0,.35);
+      background: rgba(0,0,0,.25);
+      box-shadow: 0 16px 55px rgba(0,0,0,.55);
+      padding: 18px;
+    }
+    .sectionTitle{
+      margin: 0 0 14px;
+      font-size: 22px;
+      letter-spacing:.2px;
+      font-weight: 1000;
+      color: rgba(255,212,0,.92);
+    }
+
+    /* TEAM cards */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .grid{ grid-template-columns: 1fr; } }
+
+    .card{
+      border-radius: 18px;
+      border: 2px solid rgba(255,212,0,.35);
+      background: rgba(255,255,255,.05);
+      padding: 16px;
+      box-shadow: 0 14px 45px rgba(0,0,0,.45);
+      position:relative;
+      overflow:hidden;
+      min-height: 260px;
+    }
+    .avatar{
+      width: 120px;
+      height: 120px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.14);
+      margin: 18px auto 14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: rgba(255,255,255,.35);
+      font-weight: 1000;
+      letter-spacing:.1em;
+    }
+    .name{
+      text-align:center;
+      font-weight: 1000;
+      margin: 0;
+      font-size: 16px;
+    }
+    .role{
+      text-align:center;
+      margin: 6px 0 0;
+      color: rgba(255,212,0,.90);
+      font-weight: 900;
+      font-size: 13px;
+    }
+    .bio{
+      margin: 12px auto 0;
+      color: rgba(255,255,255,.70);
+      line-height: 1.55;
+      font-size: 13px;
+      max-width: 52ch;
+      text-align:center;
+    }
+
+    /* Other sections */
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .twoCol{ grid-template-columns: 1fr; } }
+
+    .panel{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding: 16px;
+    }
+    .panel h3{
+      margin: 0 0 8px;
+      font-size: 14px;
+      letter-spacing:.25px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.82);
+    }
+    .panel p{
+      margin: 0;
+      color: rgba(255,255,255,.70);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .list{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .li{
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.20);
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .li strong{ font-size: 13px; }
+    .li span{ color: rgba(255,255,255,.65); font-size: 13px; }
+
+    /* Footer */
+    .footer{
+      margin-top: 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding: 18px;
+      color: rgba(255,255,255,.62);
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    /* Toast */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.70);
+      border: 1px solid rgba(255,255,255,.16);
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: rgba(255,255,255,.88);
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      display:none;
+      z-index: 99;
+      backdrop-filter: blur(12px);
+      font-weight: 900;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="navbox">
+      <div class="brand">
+        <img src="tmv-logo.jpg" alt="TMV Logo">
+        <div>
+          <div class="title">Team MultiVortex</div>
+          <div class="sub">TMV • Storm Chasing Team</div>
+        </div>
+      </div>
+
+      <nav class="links">
+        <a href="#home">Home</a>
+        <a href="#team">Meet The Team</a>
+        <a href="#vehicles">Chase Vehicles</a>
+        <a href="#chases">Chases</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#videos">Videos</a>
+        <a href="#suggestions">Suggestions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="home">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="heroInner">
+        <img class="heroLogo" src="tmv-logo.jpg" alt="Team MultiVortex logo">
+        <h1>Team MultiVortex</h1>
+        <p class="tagline">Chase Smart. Stay Safe. Capture the Storm.</p>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="#videos">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M8 5v14l11-7L8 5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            Watch Videos
+          </a>
+          <a class="btn" href="#gallery">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 14l2-2 3 3 2-2 3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M9 10h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            View Gallery
+          </a>
+          <button class="btn" id="copyBtn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 9h10v10H9V9Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Copy Site Link
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEET THE TEAM (matches screenshot style) -->
+    <section class="sectionFrame" id="team">
+      <h2 class="sectionTitle">Meet the Team</h2>
+
+      <div class="grid">
+        <article class="card">
+          <div class="avatar">TMV</div>
+          <p class="name">Lucas B</p>
+          <p class="role">Owner</p>
+          <p class="bio">
+            Short bio goes here. Example: route planning, leadership, live updates, storm safety focus.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="avatar">TMV</div>
+          <p class="name">Schuyler</p>
+          <p class="role">Co Owner</p>
+          <p class="bio">
+            Short bio goes here. Example: radar interpretation, communication, spotting, situational awareness.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="avatar">TMV</div>
+          <p class="name">Jaxon</p>
+          <p class="role">Head Of Reacherch</p>
+          <p class="bio">
+            Short bio goes here. Example: filming, photo, editing highlight reels, social posts, shorts.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CHASE VEHICLES -->
+    <section class="sectionFrame" id="vehicles">
+      <h2 class="sectionTitle">Chase Vehicles</h2>
+      <div class="twoCol">
+        <div class="panel">
+          <h3>Primary Vehicle</h3>
+          <p>Year/Make/Model • setup notes • lights • comms • dashcam • hail protection (if any).</p>
+          <ul class="list">
+            <li class="li"><strong>TIP</strong><span>Pontiac / Grand Prix</span></li>
+            <li class="li"><strong>Power</strong><span>Inverter / battery pack</span></li>
+            <li class="li"><strong>Camera</strong><span>Dash + handheld</span></li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Backup / Support</h3>
+          <p>Backup vehicle.</p>
+          <ul class="list">
+            <li class="li"><strong>Driver</strong><span>Chris</span></li>
+            <li class="li"><strong>Role</strong><span>Drone / tech / editor</span></li>
+            <li class="li"><strong>Notes</strong><span>TIP</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHASE LOG -->
+    <section class="sectionFrame" id="chases">
+      <h2 class="sectionTitle">Chases</h2>
+      <div class="panel">
+        <h3>Chase Log (Example)</h3>
+        <ul class="list">
+          <li class="li"><strong>2026-04-12</strong><span>Supercell day • large hail • safe intercept</span></li>
+          <li class="li"><strong>2026-05-03</strong><span>High risk setup • live updates • rain-wrapped structure</span></li>
+          <li class="li"><strong>2026-06-21</strong><span>Line storm • strong winds • lightning photography</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="sectionFrame" id="gallery">
+      <h2 class="sectionTitle">Gallery</h2>
+      <div class="panel">
+        <h3>Drop images into a folder</h3>
+        <p>
+          Want a real gallery grid like the screenshot? I can add a responsive photo grid + lightbox.
+          For now, this is a placeholder area.
+        </p>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section class="sectionFrame" id="videos">
+      <h2 class="sectionTitle">Videos</h2>
+      <div class="twoCol">
+        <div class="panel">
+          <h3>YouTube Embed</h3>
+          <p>Replace the iframe URL with your YouTube video or channel uploads.</p>
+          <div style="margin-top:12px; border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.12); background:#000;">
+            <iframe
+              width="100%" height="315"
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title="TMV Video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Shorts / TikTok</h3>
+          <p>Add your TikTok link, Shorts playlist, or highlight reels here.</p>
+          <ul class="list">
+            <li class="li"><strong>YouTube</strong><span><a href="#">youtube.com/@TeamMultiVortex-TMV</a></span></li>
+            <li class="li"><strong>TikTok</strong><span><a href="#">tiktok.com/@team_multivortex</a></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUGGESTIONS -->
+    <section class="sectionFrame" id="suggestions">
+      <h2 class="sectionTitle">Suggestions</h2>
+      <div class="panel">
+        <h3>Storm reports / ideas</h3>
+        <p>
+          Email Us About Any Questions OR Anything You Need Make It Only About Business Please Thanks, The TMV Team.
+        </p>
+        <a class="btn primary" style="margin-top:12px;"
+           href="mailto:TeamMultiVortex@gmail.com?subject=TMV%20Suggestion&body=Location%3A%0AWhat%20you%20saw%3A%0ATime%3A%0AOptional%20photos%2Flinks%3A%0A">
+          Send Suggestion (Email)
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="sectionFrame" id="contact">
+      <h2 class="sectionTitle">Contact</h2>
+      <div class="twoCol">
+        <div class="panel">
+          <h3>Business / Media</h3>
+          <p>Replace with your real contact email and Discord invite.</p>
+          <ul class="list">
+            <li class="li"><strong>Email</strong><span>TeamMultiVortex@gmail.com</span></li>
+            <li class="li"><strong>Region</strong><span>All Over</span></li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Safety note</h3>
+          <p>
+            Severe weather is dangerous. Never drive into floodwater, never block roadways,
+            and always follow local warnings and emergency officials.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Team MultiVortex (TMV)</div>
+      <div>Theme: Black • White • Yellow</div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast">Copied!</div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const toast = document.getElementById("toast");
+
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.style.display = "block";
+      clearTimeout(window.__t);
+      window.__t = setTimeout(()=> toast.style.display = "none", 1800);
+    }
+
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(location.href);
+        showToast("Link copied!");
+      }catch(e){
+        showToast("Couldn’t copy (browser blocked).");
+      }
+    });
+  </script>
+</body>
+</html>
