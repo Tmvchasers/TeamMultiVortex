@@ -90,13 +90,23 @@
       margin-top: 2px;
     }
 
+    /* ✅ FIXED NAV LINKS (no vertical stack on mobile) */
     .links{
       display:flex;
       gap: 12px;
-      flex-wrap: wrap;
       justify-content:flex-end;
       align-items:center;
+
+      /* Key fix: keep in one row */
+      flex-wrap: nowrap;
+
+      /* If it doesn't fit, scroll sideways instead of wrapping */
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
+    .links::-webkit-scrollbar{ display:none; }
+
     .links a{
       font-size: 13px;
       font-weight: 900;
@@ -107,13 +117,32 @@
       background: rgba(255,255,255,.04);
       transition: transform .12s ease, border-color .12s ease, background .12s ease, color .12s ease;
       user-select:none;
+
+      /* keep each pill intact */
       white-space: nowrap;
+      flex: 0 0 auto;
     }
     .links a:hover{
       transform: translateY(-1px);
       color: var(--text);
       background: rgba(255,255,255,.08);
       border-color: rgba(255,212,0,.35);
+    }
+
+    /* ✅ Mobile sizing tweaks so it matches PC header style */
+    @media (max-width: 768px){
+      .navbox{
+        gap: 10px;
+        padding: 10px 12px;
+      }
+      .brand{ min-width: 0; }              /* allow shrink */
+      .brand .title{ font-size: 14px; }
+      .brand .sub{ font-size: 11px; }
+
+      .links{
+        flex: 1;                           /* nav gets remaining space */
+        justify-content: flex-start;
+      }
     }
 
     /* HERO banner like screenshot */
@@ -242,7 +271,13 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
-    @media (max-width: 980px){ .grid{ grid-template-columns: 1fr; } }
+    /* ✅ Better responsive grid */
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px){
+      .grid{ grid-template-columns: 1fr; }
+    }
 
     .card{
       border-radius: 18px;
@@ -267,6 +302,7 @@
       color: rgba(255,255,255,.35);
       font-weight: 1000;
       letter-spacing:.1em;
+      object-fit: cover;
     }
     .name{
       text-align:center;
@@ -432,7 +468,7 @@
       </div>
     </section>
 
-    <!-- MEET THE TEAM (matches screenshot style) -->
+    <!-- MEET THE TEAM -->
     <section class="sectionFrame" id="team">
       <h2 class="sectionTitle">Meet the Team</h2>
 
@@ -441,153 +477,119 @@
           <img class="avatar" src="lucas.jpg" alt="Lucas B">
           <p class="name">Lucas B</p>
           <p class="role">Owner</p>
-          <p class="bio">
-            Owner Of Team MultiVortex.
-          </p>
+          <p class="bio">Owner Of Team MultiVortex.</p>
         </article>
 
         <article class="card">
           <div class="avatar">TMV</div>
           <p class="name">Schuyler</p>
           <p class="role">Co Owner</p>
-          <p class="bio">
-            Co Owner/Lead Forecaster/Editor
-          </p>
+          <p class="bio">Co Owner/Lead Forecaster/Editor</p>
         </article>
 
         <article class="card">
           <div class="avatar">TMV</div>
           <p class="name">Jaxon</p>
           <p class="role">Head Of Reacherch</p>
-          <p class="bio">
-           We Dont Know Yet.
-          </p>
+          <p class="bio">We Dont Know Yet.</p>
         </article>
 
-                <article class="card">
+        <article class="card">
           <img class="avatar" src="KSCE" alt="Lucas">
-          <p class="name">Lucas </p>
+          <p class="name">Lucas</p>
           <p class="role">Team MultiVortex</p>
-          <p class="bio">
-           Part Of Team MultiVortex.
-          </p>
+          <p class="bio">Part Of Team MultiVortex.</p>
         </article>
 
-                <article class="card">
+        <article class="card">
           <img class="avatar" src="ChrisN.jpg" alt="Chris N">
           <p class="name">Chris N</p>
           <p class="role">Drone Pilot/Tech Guy/Editor</p>
-          <p class="bio">
-            Part Of Team MultiVortex\Drone Pilot.
-          </p>
+          <p class="bio">Part Of Team MultiVortex\Drone Pilot.</p>
         </article>
 
-                        <article class="card">
+        <article class="card">
           <img class="avatar" src="Draco.jpg" alt="TMV">
           <p class="name">Draco</p>
           <p class="role">Tech Guy/Team Support</p>
-          <p class="bio">
-           Part Of Team MultiVortex/Tech.
-          </p>
+          <p class="bio">Part Of Team MultiVortex/Tech.</p>
         </article>
 
-                                <article class="card">
+        <article class="card">
           <img class="avatar" src="Joshua.jpg" alt="TMV">
           <p class="name">Joshua</p>
           <p class="role">Chaser/Forecaster</p>
-          <p class="bio">
-            Part Of Team MultiVortex.
-          </p>
+          <p class="bio">Part Of Team MultiVortex.</p>
         </article>
 
-                                        <article class="card">
+        <article class="card">
           <img class="avatar" src="82.jpg" alt="TMV">
           <p class="name">Bre</p>
           <p class="role">Chaser</p>
-          <p class="bio">
-            Part Of Team MultiVortex.
-          </p>
+          <p class="bio">Part Of Team MultiVortex.</p>
         </article>
 
-                                                <article class="card">
+        <article class="card">
           <img class="avatar" src="Bradon.jpg" alt="TMV">
           <p class="name">Braydon</p>
           <p class="role">Chaser</p>
-          <p class="bio">
-            Part Of Team MultiVortex.
-          </p>
+          <p class="bio">Part Of Team MultiVortex.</p>
         </article>
 
-                                                        <article class="card">
+        <article class="card">
           <img class="avatar" src="TMV" alt="TMV">
           <p class="name">Skylar</p>
           <p class="role">Jr Chaser/Forecaster</p>
-          <p class="bio">
-            Part Of Team MultiVortex Jr Chasers.
-          </p>
+          <p class="bio">Part Of Team MultiVortex Jr Chasers.</p>
         </article>
 
-                                                                <article class="card">
+        <article class="card">
           <img class="avatar" src="dallas.jpg" alt="TMV">
           <p class="name">Dallas</p>
           <p class="role">Jr Chaser/Manager</p>
-          <p class="bio">
-            Part Of Team MultiVortex Jr Chasers.
-          </p>
+          <p class="bio">Part Of Team MultiVortex Jr Chasers.</p>
         </article>
 
-                                                                        <article class="card">
+        <article class="card">
           <img class="avatar" src="ash.jpg" alt="TMV">
           <p class="name">Ashley</p>
           <p class="role">Jr Chaser/Secretary</p>
-          <p class="bio">
-            Part Of Team MultiVortex Jr Chasers.
-          </p>
+          <p class="bio">Part Of Team MultiVortex Jr Chasers.</p>
         </article>
 
-                                                                                <article class="card">
+        <article class="card">
           <img class="avatar" src="TMV" alt="TMV">
           <p class="name">Luke</p>
           <p class="role">Jr Chaser/Editor</p>
-          <p class="bio">
-            Part Of Team MultiVortex Jr Chasers.
-          </p>
+          <p class="bio">Part Of Team MultiVortex Jr Chasers.</p>
         </article>
 
-                                                                                        <article class="card">
+        <article class="card">
           <img class="avatar" src="Logo.jpg" alt="TMV">
           <p class="name">Logan</p>
           <p class="role">Team Support</p>
-          <p class="bio">
-            Part Of Team MultiVortex Jr Chasers.
-          </p>
+          <p class="bio">Part Of Team MultiVortex Jr Chasers.</p>
         </article>
 
-                                                                                                <article class="card">
+        <article class="card">
           <img class="avatar" src="TMV" alt="TMV">
           <p class="name">Alejandro</p>
           <p class="role">Jr Chaser</p>
-          <p class="bio">
-            Part Of Team MultiVortex Jr Chasers.
-          </p>
+          <p class="bio">Part Of Team MultiVortex Jr Chasers.</p>
         </article>
 
-                                                                                                        <article class="card">
+        <article class="card">
           <img class="avatar" src="TMV" alt="TMV">
           <p class="name">Jacki</p>
-          <p class="role">Photographer </p>
-          <p class="bio">
-            Part Of Team MultiVortex Jr Chasers.
-          </p>
+          <p class="role">Photographer</p>
+          <p class="bio">Part Of Team MultiVortex Jr Chasers.</p>
         </article>
 
-                                                                                                                <article class="card">
+        <article class="card">
           <img class="avatar" src="TMV" alt="TMV">
           <p class="name">Isaiah</p>
-          <p class="role">Jr Chaser, Team Support </p>
-          <p class="bio">
-            Part Of Team MultiVortex Jr Chasers.
-          </p>
+          <p class="role">Jr Chaser, Team Support</p>
+          <p class="bio">Part Of Team MultiVortex Jr Chasers.</p>
         </article>
       </div>
     </section>
@@ -630,39 +632,40 @@
       </div>
     </section>
 
-<!-- GALLERY -->
-<section class="sectionFrame" id="gallery">
-  <h2 class="sectionTitle">TMV Links Hub</h2>
+    <!-- GALLERY -->
+    <section class="sectionFrame" id="gallery">
+      <h2 class="sectionTitle">TMV Links Hub</h2>
+      <div class="twoCol">
+        <div class="panel">
+          <h3>All Official Team MultiVortex Links</h3>
+          <p>Access every TMV platform — videos, socials, updates, and live content — from one place.</p>
 
-  <div class="twoCol">
+          <a class="btn primary"
+             href="https://linktr.ee/TeamMultivortex"
+             target="_blank"
+             rel="noopener"
+             style="margin-top:12px;">
+            🌐 Open TMV Linktree
+          </a>
 
-    <!-- LEFT PANEL -->
-    <div class="panel">
-      <h3>All Official Team MultiVortex Links</h3>
-      <p>
-        Access every TMV platform — videos, socials, updates, and live content — from one place.
-      </p>
+          <div style="margin-top:14px;">
+            <a class="btn primary"
+               href="https://youtube.com/@TeamMultiVortex-TMV"
+               target="_blank"
+               rel="noopener"
+               style="margin-top:10px;">
+              ▶ Visit TMV YouTube Channel
+            </a>
+          </div>
+        </div>
 
-      <a class="btn primary"
-         href="https://linktr.ee/TeamMultivortex"
-         target="_blank"
-         rel="noopener"
-         style="margin-top:12px;">
-        🌐 Open TMV Linktree
-      </a>
+        <div class="panel">
+          <h3>Quick Info</h3>
+          <p>Add anything else you want here (Discord, merch, schedule, etc.).</p>
+        </div>
+      </div>
+    </section>
 
-
-<div style="margin-top:14px;">
-  <a class="btn primary"
-     href="https://youtube.com/@TeamMultiVortex-TMV"
-     target="_blank"
-     rel="noopener"
-     style="margin-top:10px;">
-    ▶ Visit TMV YouTube Channel
-  </a>
-  
-</section>
-          <!-- LEFT PANEL -->
     <!-- VIDEOS -->
     <section class="sectionFrame" id="videos">
       <h2 class="sectionTitle">Videos</h2>
@@ -685,8 +688,8 @@
           <h3>Shorts / TikTok</h3>
           <p>Add your TikTok link, Shorts playlist, or highlight reels here.</p>
           <ul class="list">
-            <li class="li"><strong>YouTube</strong><span><a href="#">youtube.com/@TeamMultiVortex-TMV</a></span></li>
-            <li class="li"><strong>TikTok</strong><span><a href="#">tiktok.com/@team_multivortex</a></span></li>
+            <li class="li"><strong>YouTube</strong><span><a href="https://youtube.com/@TeamMultiVortex-TMV" target="_blank" rel="noopener">youtube.com/@TeamMultiVortex-TMV</a></span></li>
+            <li class="li"><strong>TikTok</strong><span><a href="https://tiktok.com/@team_multivortex" target="_blank" rel="noopener">tiktok.com/@team_multivortex</a></span></li>
           </ul>
         </div>
       </div>
@@ -697,9 +700,7 @@
       <h2 class="sectionTitle">Suggestions</h2>
       <div class="panel">
         <h3>Storm reports / ideas</h3>
-        <p>
-          Email Us About Any Questions OR Anything You Need Make It Only About Business Please Thanks, The TMV Team.
-        </p>
+        <p>Email Us About Any Questions OR Anything You Need Make It Only About Business Please Thanks, The TMV Team.</p>
         <a class="btn primary" style="margin-top:12px;"
            href="mailto:teammultivortex@gmail.com?subject=TMV%20Suggestion&body=Location%3A%0AWhat%20you%20saw%3A%0ATime%3A%0AOptional%20photos%2Flinks%3A%0A">
           Send Suggestion (Email)
@@ -759,42 +760,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
